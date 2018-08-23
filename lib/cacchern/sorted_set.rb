@@ -1,6 +1,6 @@
-require 'redis_record/value'
+require 'cacchern/value'
 
-module RedisRecord
+module Cacchern
   class SortedSet
     attr_reader :key
 

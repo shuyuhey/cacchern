@@ -1,17 +1,17 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "redis_record/version"
+require "cacchern/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "redis_record"
-  spec.version       = RedisRecord::VERSION
+  spec.name          = "cacchern"
+  spec.version       = Cacchern::VERSION
   spec.authors       = ["Shuhei TAKASUGI"]
   spec.email         = ["shuhei.takasugi@gmail.com"]
 
   spec.summary       = %q{ operate Redis like ActiveRecord interface }
   spec.description   = %q{ operate Redis like ActiveRecord interface }
-  spec.homepage      = "https://github.com/shuyuhey/redis-record"
+  spec.homepage      = "https://github.com/shuyuhey/cacchern"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|

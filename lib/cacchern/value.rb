@@ -1,4 +1,4 @@
-module RedisRecord
+module Cacchern
   class Value
     include ActiveModel::Model
 
