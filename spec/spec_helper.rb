@@ -104,6 +104,7 @@ RSpec.configure do |config|
 =end
 
   redis_config = YAML.load(ERB.new(File.new('redis.yml.erb').read).result)['test']
+  Redis.current = Redis.new(host: redis_config['host'], port: redis_config['port'], db: redis_config['database'])
 
   config.before(:suite) do
     DatabaseCleaner[:redis].db = "redis://#{redis_config['host']}:#{redis_config['port']}/#{redis_config['database']}"
