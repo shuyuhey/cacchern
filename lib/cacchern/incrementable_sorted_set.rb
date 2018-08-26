@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require 'cacchern/sorted_set'
 
 module Cacchern
   class IncrementableSortedSet < Cacchern::SortedSet
-
     def increment(value)
       return false unless value.instance_of?(self.class.contain_class)
 

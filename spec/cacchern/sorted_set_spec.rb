@@ -1,10 +1,11 @@
-require 'spec_helper'
+# frozen_string_literal: true
+
+require_relative '../spec_helper'
 require 'redis'
 require_relative 'caches/score_sorted_set'
 require_relative 'caches/score_value'
 
 RSpec.describe Cacchern::SortedSet do
-
   describe '#initialize' do
     let(:sorted_set_instance) { ScoreSortedSet.new('base') }
 
@@ -31,7 +32,7 @@ RSpec.describe Cacchern::SortedSet do
     let(:sorted_set_instance) { ScoreSortedSet.new('base') }
 
     it { expect(sorted_set_instance.add(ScoreValue.new(set_key, set_value))).to be_truthy }
-    it { expect(sorted_set_instance.add({key: set_key, value: set_value})).to be_falsey }
+    it { expect(sorted_set_instance.add(key: set_key, value: set_value)).to be_falsey }
 
     it do
       value = Redis.current.zscore sorted_set_instance.key, set_key
@@ -56,7 +57,7 @@ RSpec.describe Cacchern::SortedSet do
     end
 
     it { expect(sorted_set_instance.order(:asc).count).to eq 2 }
-    it { expect(sorted_set_instance.order(:asc)).to all( be_a(ScoreValue) ) }
+    it { expect(sorted_set_instance.order(:asc)).to all(be_a(ScoreValue)) }
 
     it do
       expect(sorted_set_instance.order(:asc).first.key).to eq value1.key.to_s
