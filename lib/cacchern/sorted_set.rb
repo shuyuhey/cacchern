@@ -6,8 +6,14 @@ module Cacchern
   class SortedSet
     attr_reader :key
 
-    def self.contain_class
-      Value
+    class << self
+      def contain_class(klass)
+        @value_class = klass
+      end
+
+      def value_class
+        @value_class ||= Value
+      end
     end
 
     def initialize(key)
@@ -17,7 +23,7 @@ module Cacchern
     def get(id)
       score = Redis.current.zscore @key, id
       return nil if score.nil?
-      self.class.contain_class.new(id, score)
+      self.class.value_class.new(id, score)
     end
 
     def order(direction = :asc)
@@ -29,11 +35,11 @@ module Cacchern
                else
                  Redis.current.zrange @key, 0, -1, withscores: true
                end
-      values.map { |value| self.class.contain_class.new(value[0], value[1]) }
+      values.map { |value| self.class.value_class.new(value[0], value[1]) }
     end
 
     def add(value)
-      return false unless value.instance_of?(self.class.contain_class)
+      return false unless value.instance_of?(self.class.value_class)
 
       if value.valid?
         Redis.current.zadd @key, value.value, value.key

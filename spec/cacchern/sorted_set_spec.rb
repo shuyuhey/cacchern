@@ -4,8 +4,19 @@ require_relative '../spec_helper'
 require 'redis'
 require_relative 'caches/score_sorted_set'
 require_relative 'caches/score_value'
+require_relative 'caches/simple_sorted_set'
 
 RSpec.describe Cacchern::SortedSet do
+  describe '.value_class' do
+    context 'when set contain_class' do
+      it { expect(ScoreSortedSet.value_class).to eq(ScoreValue) }
+    end
+
+    context 'when do not set contain_class' do
+      it { expect(SimpleSortedSet.value_class).to eq(Cacchern::Value) }
+    end
+  end
+
   describe '#initialize' do
     let(:sorted_set_instance) { ScoreSortedSet.new('base') }
 
