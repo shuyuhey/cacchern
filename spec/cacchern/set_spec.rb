@@ -15,7 +15,6 @@ RSpec.describe Cacchern::Set do
     context 'when do not set contain_class' do
       it { expect(SimpleSet.value_class).to eq(Cacchern::Member) }
     end
-
   end
 
   describe '#initialize' do

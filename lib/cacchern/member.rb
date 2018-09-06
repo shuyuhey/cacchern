@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Cacchern
   class Member
     include ActiveModel::Model
