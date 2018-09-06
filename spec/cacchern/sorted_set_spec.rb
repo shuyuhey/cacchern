@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../spec_helper'
+require 'cacchern'
 require 'redis'
 require_relative 'caches/score_sorted_set'
 require_relative 'caches/score_value'
