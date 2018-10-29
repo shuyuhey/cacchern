@@ -22,7 +22,7 @@ Or install it yourself as:
 
 1. Create classes
 
-Create a class that overrides Cacchern::Value
+Create class that overrides Cacchern::Value
 
 ```ruby
 class Score < Cacchern::Value
@@ -31,7 +31,7 @@ class Score < Cacchern::Value
 end
 ```
 
-Create a class that overrides Cacchern::Value
+Create class that overrides Cacchern::Value
 
 ```ruby
 class ScoreSet < Cacchern::SortedSet
