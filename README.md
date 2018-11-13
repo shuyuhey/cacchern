@@ -22,16 +22,16 @@ Or install it yourself as:
 
 1. Create classes
 
-Create class that overrides Cacchern::Value
+Create class that overrides Cacchern::SortableMember
 
 ```ruby
-class Score < Cacchern::Value
+class Score < Cacchern::SortableMember
   validates :key, presence: true, numericality: { only_integer: true }
   validates :value, presence: true, numericality: true
 end
 ```
 
-Create class that overrides Cacchern::Value
+Create class that overrides Cacchern::SortableMember
 
 ```ruby
 class ScoreSet < Cacchern::SortedSet
