@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Cacchern
-  class Value
+  class SortableMember
     include ActiveModel::Model
 
     attr_reader :key, :value
