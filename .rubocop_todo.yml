@@ -10,19 +10,8 @@
 # Configuration parameters: CountComments, ExcludedMethods.
 # ExcludedMethods: refine
 Metrics/BlockLength:
-  Max: 56
-
-# Offense count: 6
-Style/Documentation:
   Exclude:
     - 'spec/**/*'
-    - 'test/**/*'
-    - 'lib/cacchern.rb'
-    - 'lib/cacchern/incrementable_sorted_set.rb'
-    - 'lib/cacchern/member.rb'
-    - 'lib/cacchern/set.rb'
-    - 'lib/cacchern/sorted_set.rb'
-    - 'lib/cacchern/value.rb'
 
 # Offense count: 6
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.

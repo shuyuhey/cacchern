@@ -6,7 +6,6 @@ require_relative 'caches/token'
 require_relative 'caches/counter'
 
 RSpec.describe Cacchern::Object do
-
   describe '.key' do
     it { expect(Token.key(1)).to eq 'token:1' }
   end
@@ -72,7 +71,6 @@ RSpec.describe Cacchern::Object do
       it { expect { invalid_object_instance2.save! }.to raise_error(ActiveModel::ValidationError) }
     end
   end
-
 
   describe '#delete' do
     let(:object_instance) { Token.new(1, 'hoge') }

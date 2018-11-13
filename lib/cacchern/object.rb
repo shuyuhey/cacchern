@@ -31,7 +31,7 @@ module Cacchern
 
     class << self
       def key(id)
-        "#{self.name.underscore}:#{id}"
+        "#{name.underscore}:#{id}"
       end
 
       def find(id)
