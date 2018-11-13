@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'cacchern/value'
+require 'cacchern/sortable_member'
 
 module Cacchern
   class SortedSet
@@ -12,7 +12,7 @@ module Cacchern
       end
 
       def value_class
-        @value_class ||= Value
+        @value_class ||= SortableMember
       end
     end
 

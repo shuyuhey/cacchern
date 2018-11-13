@@ -13,7 +13,7 @@ RSpec.describe Cacchern::SortedSet do
     end
 
     context 'when do not set contain_class' do
-      it { expect(SimpleSortedSet.value_class).to eq(Cacchern::Value) }
+      it { expect(SimpleSortedSet.value_class).to eq(Cacchern::SortableMember) }
     end
   end
 
