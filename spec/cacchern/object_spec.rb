@@ -48,6 +48,18 @@ RSpec.describe Cacchern::Object do
       it { expect(invalid_object_instance1.save).to be_falsey }
       it { expect(invalid_object_instance2.save).to be_falsey }
     end
+
+    context 'when save with expire option' do
+      let(:object_instance) { Token.new(1, 'hoge') }
+      let(:ttl) { 1.hour.since }
+
+      it { expect(object_instance.save(expires_in: ttl)).to be_truthy }
+
+      it do
+        object_instance.save(expires_in: ttl)
+        expect(Redis.current.ttl(object_instance.key)).to eq ttl.to_i
+      end
+    end
   end
 
   describe '#save!' do
@@ -69,6 +81,18 @@ RSpec.describe Cacchern::Object do
 
       it { expect { invalid_object_instance1.save! }.to raise_error(ActiveModel::ValidationError) }
       it { expect { invalid_object_instance2.save! }.to raise_error(ActiveModel::ValidationError) }
+    end
+
+    context 'when save with expire option' do
+      let(:object_instance) { Token.new(1, 'hoge') }
+      let(:ttl) { 1.hour.since }
+
+      it { expect(object_instance.save!(expires_in: ttl)).to be_truthy }
+
+      it do
+        object_instance.save!(expires_in: ttl)
+        expect(Redis.current.ttl(object_instance.key)).to eq ttl.to_i
+      end
     end
   end
 

@@ -17,12 +17,14 @@ module Cacchern
       @value = value
     end
 
-    def save
-      valid? ? create_or_update : false
+    def save(options = {})
+      expires_in = options[:expires_in]
+      valid? ? create_or_update(expires_in) : false
     end
 
-    def save!
-      valid? ? create_or_update : raise_validation_error
+    def save!(options = {})
+      expires_in = options[:expires_in]
+      valid? ? create_or_update(expires_in) : raise_validation_error
     end
 
     def delete
@@ -44,8 +46,12 @@ module Cacchern
 
     private
 
-    def create_or_update
-      Redis.current.set(key, value) == 'OK'
+    def create_or_update(expires_in = nil)
+      if expires_in
+        Redis.current.setex(key, expires_in.to_i, value)
+      else
+        Redis.current.set(key, value) == 'OK'
+      end
     end
   end
 end

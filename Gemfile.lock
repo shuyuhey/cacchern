@@ -61,6 +61,7 @@ PLATFORMS
 
 DEPENDENCIES
   activemodel
+  activesupport
   bundler
   cacchern!
   database_cleaner
