@@ -1,7 +1,10 @@
 PATH
   remote: .
   specs:
-    cacchern (0.0.6)
+    cacchern (0.0.7)
+      activemodel
+      activesupport
+      redis (~> 4.0.0)
 
 GEM
   remote: https://rubygems.org/
@@ -58,14 +61,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activemodel
-  activesupport
   bundler
   cacchern!
   database_cleaner
   dotenv
   rake
-  redis (~> 4.0.0)
   rspec
   rubocop
 
