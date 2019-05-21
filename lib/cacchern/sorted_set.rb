@@ -23,6 +23,7 @@ module Cacchern
     def get(id)
       score = Redis.current.zscore @key, id
       return nil if score.nil?
+
       self.class.value_class.new(id, score)
     end
 
