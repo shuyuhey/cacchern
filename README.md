@@ -1,6 +1,6 @@
 # Cacchern
 
-operate Redis like ActiveRecord interface
+operate Redis with validation by ActiveModel
 
 ## Installation
 
@@ -19,6 +19,47 @@ Or install it yourself as:
     $ gem install cacchern
 
 ## Usage
+
+- available classes
+  - Object(String)
+  - Set
+  - SortedSet 
+
+### Object
+`Cacchern::Object` is simple key-value class
+
+1. Create classes
+
+Create class that overrides `Cacchern::Object`.
+
+```ruby
+class Token < Cacchern::Object
+  validates :value, presence: true
+end
+```
+
+2. Add value
+```ruby
+Token.new(1, 'some token...').save
+```
+
+If you want to save with ttl.
+
+```ruby
+Token.new(1, 'some token...').save(expires_in: 1.hours)
+```
+
+If you make raise `Error` with save, you can use `save!` method.
+
+3.Get value
+
+```ruby
+token = Token.find(1)
+
+print token.value # 'some token...'
+```
+
+### SortedSet
 
 1. Create classes
 
