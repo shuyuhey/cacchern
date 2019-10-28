@@ -22,8 +22,8 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'activemodel'
-  spec.add_dependency 'activesupport'
+  spec.add_dependency 'activemodel', '~> 5.2.3'
+  spec.add_dependency 'activesupport', '~> 5.2.3'
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake'
   spec.add_dependency 'redis', '~> 4.0.0'

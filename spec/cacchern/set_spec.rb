@@ -87,7 +87,6 @@ RSpec.describe Cacchern::Set do
       set_instance.add(ReadMember.new(100))
       set_instance.add(ReadMember.new(200))
       set_instance.add(ReadMember.new(300))
-
     end
 
     it do

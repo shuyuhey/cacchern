@@ -2,21 +2,20 @@ PATH
   remote: .
   specs:
     cacchern (0.0.8)
-      activemodel
-      activesupport
+      activemodel (~> 5.2.3)
+      activesupport (~> 5.2.3)
       redis (~> 4.0.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (6.0.0)
-      activesupport (= 6.0.0)
-    activesupport (6.0.0)
+    activemodel (5.2.3)
+      activesupport (= 5.2.3)
+    activesupport (5.2.3)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-      zeitwerk (~> 2.1, >= 2.1.8)
     ast (2.4.0)
     concurrent-ruby (1.1.5)
     database_cleaner (1.7.0)
@@ -57,7 +56,6 @@ GEM
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     unicode-display_width (1.6.0)
-    zeitwerk (2.2.0)
 
 PLATFORMS
   ruby
