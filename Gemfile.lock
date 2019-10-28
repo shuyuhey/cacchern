@@ -2,8 +2,8 @@ PATH
   remote: .
   specs:
     cacchern (0.0.9)
-      activemodel (~> 5.2.3)
-      activesupport (~> 5.2.3)
+      activemodel (>= 5.2.2, < 6.0.0)
+      activesupport (>= 5.2.2, < 6.0.0)
       redis (>= 4.0.0, < 4.2.0)
 
 GEM
