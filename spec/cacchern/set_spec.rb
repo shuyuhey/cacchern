@@ -64,4 +64,34 @@ RSpec.describe Cacchern::Set do
       expect(values).to be_empty
     end
   end
+
+  describe '#remove' do
+    let(:set_instance) { ReadSet.new('base') }
+
+    context 'when remove by key' do
+      before do
+        set_instance.add(ReadMember.new(100))
+        set_instance.add(ReadMember.new(200))
+      end
+
+      it do
+        expect { set_instance.remove(ReadMember.new(100)) }.to change { set_instance.all.count }.from(2).to(1)
+      end
+    end
+  end
+
+  describe '#remove_all' do
+    let(:set_instance) { ReadSet.new('base') }
+
+    before do
+      set_instance.add(ReadMember.new(100))
+      set_instance.add(ReadMember.new(200))
+      set_instance.add(ReadMember.new(300))
+
+    end
+
+    it do
+      expect { set_instance.remove_all }.to change { set_instance.all.count }.from(3).to(0)
+    end
+  end
 end

@@ -35,5 +35,13 @@ module Cacchern
         false
       end
     end
+
+    def remove(value)
+      Redis.current.srem @key, value.value
+    end
+
+    def remove_all
+      Redis.current.del @key
+    end
   end
 end
