@@ -26,5 +26,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'activesupport', '~> 5.2.3'
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake'
-  spec.add_dependency 'redis', '~> 4.0.0'
+  spec.add_dependency 'redis', '>= 4.0.0', '< 4.2.0'
 end
