@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    cacchern (0.0.9)
+    cacchern (0.0.10)
       activemodel (>= 5.2.2, < 6.0.0)
       activesupport (>= 5.2.2, < 6.0.0)
       redis (>= 4.0.0, < 4.2.0)
