@@ -27,7 +27,7 @@ module Cacchern
       self.class.value_class.new(id, score)
     end
 
-    def where_by_score(min = '-inf', max = '+inf')
+    def where_by_score(min: '-inf', max: '+inf')
       min = min.to_s if min.is_a? Numeric
       max = max.to_s if max.is_a? Numeric
       values = Redis.current.zrangebyscore @key, min, max, withscores: true
