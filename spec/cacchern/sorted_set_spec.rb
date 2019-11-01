@@ -57,6 +57,27 @@ RSpec.describe Cacchern::SortedSet do
     end
   end
 
+  describe '#where_by_score' do
+    let(:sorted_set_instance) { ScoreSortedSet.new('base') }
+    let(:value1) { ScoreValue.new(1, 100) }
+    let(:value2) { ScoreValue.new(2, 200) }
+
+    before do
+      sorted_set_instance.add(value1)
+      sorted_set_instance.add(value2)
+    end
+
+    it { expect(sorted_set_instance.where_by_score.count).to eq 2 }
+    it { expect(sorted_set_instance.where_by_score).to all(be_a(ScoreValue)) }
+
+    it { expect(sorted_set_instance.where_by_score(max: 0).count).to eq 0 }
+
+    it { expect(sorted_set_instance.where_by_score(min: 0, max: 300).count).to eq 2 }
+
+    it { expect(sorted_set_instance.where_by_score(min: 0, max: 150).count).to eq 1 }
+    it { expect(sorted_set_instance.where_by_score(min: 0, max: 150).first.key).to eq value1.key.to_s }
+  end
+
   describe '#order' do
     let(:sorted_set_instance) { ScoreSortedSet.new('base') }
     let(:value1) { ScoreValue.new(1, 100) }
