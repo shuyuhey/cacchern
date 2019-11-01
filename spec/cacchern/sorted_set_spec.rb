@@ -68,7 +68,14 @@ RSpec.describe Cacchern::SortedSet do
     end
 
     it { expect(sorted_set_instance.where_by_score.count).to eq 2 }
-    it { expect(sorted_set_instance.order(:asc)).to all(be_a(ScoreValue)) }
+    it { expect(sorted_set_instance.where_by_score).to all(be_a(ScoreValue)) }
+
+    it { expect(sorted_set_instance.where_by_score(max: 0).count).to eq 0 }
+
+    it { expect(sorted_set_instance.where_by_score(min: 0, max: 300).count).to eq 2 }
+
+    it { expect(sorted_set_instance.where_by_score(min: 0, max: 150).count).to eq 1 }
+    it { expect(sorted_set_instance.where_by_score(min: 0, max: 150).first.key).to eq value1.key.to_s }
   end
 
   describe '#order' do
